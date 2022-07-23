@@ -3,7 +3,7 @@
 const LEFT = -1;
 const RIGHT = 1;
 
-function move(originalText, selectionStart, selectionEnd, direction = LEFT) {
+function movePhrase(originalText, selectionStart, selectionEnd, direction = LEFT) {
 	if (selectionStart !== selectionEnd && originalText[selectionEnd - 1] === ' ') {
 		selectionEnd -= 1;
 	} 

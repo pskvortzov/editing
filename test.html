@@ -3,46 +3,46 @@
 <script src="editing.js"></script>
 <script>
 
-	console.log(move('one two three four', 0, 0, LEFT).modifiedText == 'one two three four', "it doesn't move the closest word when it is already the first word");
-	console.log(move('one two three four', 15, 15, RIGHT).modifiedText == 'one two three four', "it doesn't move the closest word when it is already the last word");
+	console.log(movePhrase('one two three four', 0, 0, LEFT).modifiedText == 'one two three four', "it doesn't move the closest word when it is already the first word");
+	console.log(movePhrase('one two three four', 15, 15, RIGHT).modifiedText == 'one two three four', "it doesn't move the closest word when it is already the last word");
 
-	const test1 = move('test', 2, 2, LEFT);
+	const test1 = movePhrase('test', 2, 2, LEFT);
 	console.log(test1.newSelectionStart === 0 && test1.newSelectionEnd === 4, "it returns the correct selection start and end indexes when the phrase has one word and it is moved to the left");
 
-	const test2 = move('test', 2, 2, RIGHT);
+	const test2 = movePhrase('test', 2, 2, RIGHT);
 	console.log(test2.newSelectionStart === 0 && test2.newSelectionEnd === 4, "it returns the correct selection start and end indexes when the phrase has one word and it is moved to the right");
 
-	console.log(move('one two three four', 10, 10, LEFT).modifiedText == 'one three two four', "it moves the closest word to the left when nothing is selected");
-	console.log(move('one two three four', 5, 5, RIGHT).modifiedText == 'one three two four', "it moves the closest word to the right when nothing is selected");
+	console.log(movePhrase('one two three four', 10, 10, LEFT).modifiedText == 'one three two four', "it moves the closest word to the left when nothing is selected");
+	console.log(movePhrase('one two three four', 5, 5, RIGHT).modifiedText == 'one three two four', "it moves the closest word to the right when nothing is selected");
 
-	console.log(move('one two three four', 8, 8, LEFT).modifiedText == 'one three two four', "it moves the closest word to the left when nothing is selected and the cursor is at the beginning of the word");
-	console.log(move('one two three four', 13, 13, RIGHT).modifiedText == 'one two four three', "it moves the closest word to the right when nothing is selected and the cursor is at the end of the word");
+	console.log(movePhrase('one two three four', 8, 8, LEFT).modifiedText == 'one three two four', "it moves the closest word to the left when nothing is selected and the cursor is at the beginning of the word");
+	console.log(movePhrase('one two three four', 13, 13, RIGHT).modifiedText == 'one two four three', "it moves the closest word to the right when nothing is selected and the cursor is at the end of the word");
 
-	console.log(move('one two three four', 5, 5, LEFT).modifiedText == 'two one three four', "it moves the closest word to the leftmost position when nothing is selected");
+	console.log(movePhrase('one two three four', 5, 5, LEFT).modifiedText == 'two one three four', "it moves the closest word to the leftmost position when nothing is selected");
 	
-	console.log(move('one two three four', 10, 10, RIGHT).modifiedText == 'one two four three', "it moves the closest word to the rightmost position when nothing is selected");
+	console.log(movePhrase('one two three four', 10, 10, RIGHT).modifiedText == 'one two four three', "it moves the closest word to the rightmost position when nothing is selected");
 
-	const test3 = move('my test phrase', 10, 10, LEFT);
+	const test3 = movePhrase('my test phrase', 10, 10, LEFT);
 	console.log(test3.newSelectionStart === 3 && test3.newSelectionEnd === 9, "it returns the correct selection start and end indexes when one word is moved to the left");
 
-	const test4 = move('my test phrase', 5, 5, RIGHT);
+	const test4 = movePhrase('my test phrase', 5, 5, RIGHT);
 	console.log(test4.newSelectionStart === 10 && test4.newSelectionEnd === 14, "it returns the correct selection start and end indexes when one word is moved to the right");
 
-	console.log(move('one two three four', 4, 12, LEFT).modifiedText == 'two three one four', "it moves two or more selected words to the left");
-	console.log(move('one two three four', 4, 12, RIGHT).modifiedText == 'one four two three', "it moves two or more selected words to the right");
+	console.log(movePhrase('one two three four', 4, 12, LEFT).modifiedText == 'two three one four', "it moves two or more selected words to the left");
+	console.log(movePhrase('one two three four', 4, 12, RIGHT).modifiedText == 'one four two three', "it moves two or more selected words to the right");
 
-	const test5 = move('one two three four', 4, 12, LEFT);
+	const test5 = movePhrase('one two three four', 4, 12, LEFT);
 	console.log(test5.newSelectionStart === 0 && test5.newSelectionEnd === 9, "it returns the correct selection start and end indexes when two or more words are moved to the left");
 
-	const test6 = move('one two three four', 4, 12, RIGHT);
+	const test6 = movePhrase('one two three four', 4, 12, RIGHT);
 	console.log(test6.newSelectionStart === 9 && test6.newSelectionEnd === 18, "it returns the correct selection start and end indexes when two or more words are moved to the right");
 
-	console.log(move('The quick brown fox jumped over the lazy dog', 10, 18, LEFT).modifiedText == 'The brown fox quick jumped over the lazy dog', "it moves two or more selected words in a long phrase to the left");
-	console.log(move('The quick brown fox jumped over the lazy dog', 4, 14, RIGHT).modifiedText == 'The fox quick brown jumped over the lazy dog', "it moves two or more selected words in a long phrase to the right");
+	console.log(movePhrase('The quick brown fox jumped over the lazy dog', 10, 18, LEFT).modifiedText == 'The brown fox quick jumped over the lazy dog', "it moves two or more selected words in a long phrase to the left");
+	console.log(movePhrase('The quick brown fox jumped over the lazy dog', 4, 14, RIGHT).modifiedText == 'The fox quick brown jumped over the lazy dog', "it moves two or more selected words in a long phrase to the right");
 
-	console.log(move('one two three four', 5, 11, LEFT).modifiedText == 'two three one four', "it moves two or more partially selected words to the left");
-	console.log(move('one two three four', 5, 11, RIGHT).modifiedText == 'one four two three', "it moves two or more partially selected words to the right");
+	console.log(movePhrase('one two three four', 5, 11, LEFT).modifiedText == 'two three one four', "it moves two or more partially selected words to the left");
+	console.log(movePhrase('one two three four', 5, 11, RIGHT).modifiedText == 'one four two three', "it moves two or more partially selected words to the right");
 
-	console.log(move('one two three four', 4, 13, LEFT).modifiedText == 'two three one four', "it correctly moves words to the left if the last selected symbol is space");
-	console.log(move('one two three four', 4, 13, RIGHT).modifiedText == 'one four two three', "it correctly moves words to the right if the last selected symbol is space");
+	console.log(movePhrase('one two three four', 4, 13, LEFT).modifiedText == 'two three one four', "it correctly moves words to the left if the last selected symbol is space");
+	console.log(movePhrase('one two three four', 4, 13, RIGHT).modifiedText == 'one four two three', "it correctly moves words to the right if the last selected symbol is space");
 </script>
