@@ -1,2 +1,2 @@
 # Editing tools
-A small function that helps moving words around when editing texts. You can try the demo [here](https://pskv.me/editing/). Press Ctrl + Alt + Left or Right arrow to move the selected word(s).
+A small toolset that helps moving words around when editing texts. You can try the demo [here](https://pskv.me/editing/). Press Ctrl + Alt + Left or Right arrow to move the selected word(s).
