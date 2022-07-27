@@ -1,8 +1,8 @@
 export default class EditingTools {
-	LEFT = -1;
-	RIGHT = 1;
+	static LEFT = -1;
+	static RIGHT = 1;
 
-	movePhrase(originalText, selectionStart, selectionEnd, direction = this.LEFT) {
+	static movePhrase(originalText, selectionStart, selectionEnd, direction = this.LEFT) {
 		if (selectionStart !== selectionEnd && originalText[selectionEnd - 1] === ' ') {
 			selectionEnd -= 1;
 		} 
@@ -32,7 +32,7 @@ export default class EditingTools {
 		return results;
 	}
 
-	moveWords(wordsArray, wordStartIndex, wordEndIndex, direction) {
+	static moveWords(wordsArray, wordStartIndex, wordEndIndex, direction) {
 		const selectedPhrase = wordsArray.splice(wordStartIndex, wordEndIndex - wordStartIndex);
 		wordsArray.splice(wordStartIndex + direction, 0, ...selectedPhrase);
 
@@ -42,7 +42,7 @@ export default class EditingTools {
 		return [wordsArray, newSelectionStart, newSelectionEnd];
 	}
 
-	getIndexes(originalText, selectionStart, selectionEnd) {
+	static getIndexes(originalText, selectionStart, selectionEnd) {
 		const matchesStart = originalText.substring(0, selectionStart).match(/ /g);
 		const wordsStartIndex = matchesStart !== null ? matchesStart.length : 0;
 
@@ -53,7 +53,7 @@ export default class EditingTools {
 	}
 
 
-	getSelectionStart(wordsArray, wordIndex) {
+	static getSelectionStart(wordsArray, wordIndex) {
 		if (wordIndex === 0) {
 			return 0;
 		}
